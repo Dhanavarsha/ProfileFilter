@@ -15,7 +15,7 @@ public class ProfileFilterTests {
     public void testProfileFilter() {
         File file = new File("src/main/resources/DD_Resume.doc");
         ProfileFilter filter = new ProfileFilter();
-        String keyword = "Appium";
-        Assert.assertTrue(filter.isProfileSelected(file, keyword));
+        String[] keywords = new String[]{"Selenium", "Appium", "Java", "Travis"};
+        Assert.assertTrue(filter.isProfileSelected(file, keywords));
     }
 }
