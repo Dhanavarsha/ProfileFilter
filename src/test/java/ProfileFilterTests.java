@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import rules.ContainsKeyword;
 
 import java.io.File;
 
@@ -12,10 +13,10 @@ public class ProfileFilterTests {
     }
 
     @Test
-    public void testProfileFilter() {
+    public void testContainsRule() {
         File file = new File("src/main/resources/DD_Resume.doc");
-        ProfileFilter filter = new ProfileFilter();
-        String[] keywords = new String[]{"Selenium", "Appium", "Java", "Travis"};
-        Assert.assertTrue(filter.isProfileSelected(file, keywords));
+        ProfileFilter filter = new ProfileFilter(file);
+        ContainsKeyword rule = new ContainsKeyword("Selenium");
+        Assert.assertTrue(filter.isSelected(rule));
     }
 }
