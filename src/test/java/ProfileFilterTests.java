@@ -13,7 +13,7 @@ public class ProfileFilterTests {
     }
 
     @Test
-    public void testContainsRule() {
+    public void testContainsKeywordRule() {
         File file = new File("src/main/resources/DD_Resume.doc");
         ProfileFilter filter = new ProfileFilter(file);
         ContainsKeyword rule = new ContainsKeyword("Selenium");
