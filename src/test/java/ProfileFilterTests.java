@@ -10,4 +10,12 @@ public class ProfileFilterTests {
         DocumentReader reader = new DocumentReader();
         Assert.assertEquals(reader.getDocumentText(file).trim(), "Hello World!");
     }
+
+    @Test
+    public void testProfileFilter() {
+        File file = new File("src/main/resources/DD_Resume.doc");
+        ProfileFilter filter = new ProfileFilter();
+        String keyword = "Appium";
+        Assert.assertTrue(filter.isProfileSelected(file, keyword));
+    }
 }
