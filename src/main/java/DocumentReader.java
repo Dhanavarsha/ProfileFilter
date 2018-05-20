@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class DocumentReader {
-    public String getDocumentText(File file) {
+    public static String getDocumentText(File file) {
         FileInputStream fis;
         String text = null;
         try {

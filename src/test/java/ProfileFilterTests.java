@@ -11,27 +11,24 @@ public class ProfileFilterTests {
     @Test
     public void testDocumentReader() {
         File file = new File("src/main/resources/Test.doc");
-        DocumentReader reader = new DocumentReader();
-        Assert.assertEquals(reader.getDocumentText(file).trim(), "Hello World!");
+        Assert.assertEquals(DocumentReader.getDocumentText(file).trim(), "Hello World!");
     }
 
     @Test
     public void testContainsKeywordRule() {
         File file = new File("src/main/resources/DD_Resume.doc");
-        DocumentReader reader = new DocumentReader();
         ContainsKeyword rule = new ContainsKeyword("Java");
-        Assert.assertTrue(rule.interpret(reader.getDocumentText(file)));
+        Assert.assertTrue(rule.interpret(DocumentReader.getDocumentText(file)));
     }
 
     @Test
     public void testForMultipleKeywords() {
         File file = new File("src/main/resources/DD_Resume.doc");
-        DocumentReader reader = new DocumentReader();
         ArrayList<Rule> listOfRules = new ArrayList<Rule>();
         listOfRules.add(new ContainsKeyword("Selenium"));
         listOfRules.add(new ContainsKeyword("Appium"));
         listOfRules.add(new ContainsKeyword("Java"));
         Rule rule = new AllRules(listOfRules);
-        Assert.assertTrue(rule.interpret(reader.getDocumentText(file)));
+        Assert.assertTrue(rule.interpret(DocumentReader.getDocumentText(file)));
     }
 }
