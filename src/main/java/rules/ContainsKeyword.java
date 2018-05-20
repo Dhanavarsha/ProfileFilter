@@ -8,9 +8,6 @@ public class ContainsKeyword implements Rule {
     }
 
     public boolean interpret(String documentText) {
-        if (documentText.toLowerCase().contains(word.toLowerCase()))
-            return true;
-        else
-            return false;
+        return documentText.toLowerCase().contains(word.toLowerCase());
     }
 }
