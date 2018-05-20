@@ -15,14 +15,14 @@ public class ProfileFilterTests {
     }
 
     @Test
-    public void testContainsKeywordRule() {
+    public void testProfileForSingleKeyword() {
         File file = new File("src/main/resources/DD_Resume.doc");
         ContainsKeyword rule = new ContainsKeyword("Java");
         Assert.assertTrue(rule.interpret(DocumentReader.getDocumentText(file)));
     }
 
     @Test
-    public void testForMultipleKeywords() {
+    public void testProfileForMultipleKeywords() {
         File file = new File("src/main/resources/DD_Resume.doc");
         ArrayList<Rule> listOfRules = new ArrayList<Rule>();
         listOfRules.add(new ContainsKeyword("Selenium"));
