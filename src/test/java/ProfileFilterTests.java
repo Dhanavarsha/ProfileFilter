@@ -1,9 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import rules.AllRules;
-import rules.AnyRule;
-import rules.ContainsKeyword;
-import rules.Rule;
+import rules.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -41,6 +38,16 @@ public class ProfileFilterTests {
         listOfRules.add(new ContainsKeyword("Selenium"));
         listOfRules.add(new ContainsKeyword("Sahi"));
         AnyRule rule = new AnyRule(listOfRules);
+        Assert.assertTrue(rule.interpret(DocumentReader.getDocumentText(file)));
+    }
+
+    @Test
+    public void testProfileForInputKeywordAndItsCount() {
+        File file = new File("src/main/resources/DD_Resume.doc");
+        ArrayList<Rule> listOfRules = new ArrayList<Rule>();
+        listOfRules.add(new MinimumWordCount("Selenium", 3));
+        listOfRules.add(new MinimumWordCount("Appium", 3));
+        Rule rule = new AllRules(listOfRules);
         Assert.assertTrue(rule.interpret(DocumentReader.getDocumentText(file)));
     }
 }
