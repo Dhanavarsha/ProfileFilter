@@ -18,9 +18,9 @@ public class ProfileFilterTests {
     @Test
     public void testContainsKeywordRule() {
         File file = new File("src/main/resources/DD_Resume.doc");
-        ProfileFilter filter = new ProfileFilter(file);
-        ContainsKeyword rule = new ContainsKeyword("Selenium");
-        Assert.assertTrue(filter.isSelected(rule));
+        DocumentReader reader = new DocumentReader();
+        ContainsKeyword rule = new ContainsKeyword("Java");
+        Assert.assertTrue(rule.interpret(reader.getDocumentText(file)));
     }
 
     @Test
