@@ -3,23 +3,27 @@ package rules;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.File;
 import java.util.ArrayList;
 
-import static org.testng.Assert.*;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class AllRulesTest {
     @Test
     public void testInterpret() throws Exception {
         ArrayList<Rule> listOfRules = new ArrayList<Rule>();
-        listOfRules.add(new ContainsKeyword("selenium"));
-        listOfRules.add(new ContainsKeyword("appium"));
-        listOfRules.add(new ContainsKeyword("java"));
+        listOfRules.add(createMockRuleReturning(true));
+        listOfRules.add(createMockRuleReturning(true));
         Rule rule = new AllRules(listOfRules);
-        Assert.assertTrue(rule.interpret("Appium supports all languages that have Selenium " +
-                "client libraries like- Java, Objective-C, JavaScript with node.js, PHP, Ruby, Python, C#, etc."));
-        Assert.assertFalse(rule.interpret("Basically, Appium derives its roots from Selenium and it" +
-                " uses JSONWireProtocol internally to interact with iOS and Android apps using Selenium's WebDriver"));
+        Assert.assertTrue(rule.interpret(""));
+        listOfRules.add(createMockRuleReturning(false));
+        Assert.assertFalse(rule.interpret(""));
     }
 
+    private Rule createMockRuleReturning(boolean returnValue) {
+        Rule mockedRule = mock(Rule.class);
+        when(mockedRule.interpret(anyString())).thenReturn(returnValue);
+        return mockedRule;
+    }
 }
