@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import rules.AllRules;
 import rules.ContainsKeyword;
 import rules.Rule;
 
@@ -25,11 +26,12 @@ public class ProfileFilterTests {
     @Test
     public void testForMultipleKeywords() {
         File file = new File("src/main/resources/DD_Resume.doc");
-        ProfileFilter filter = new ProfileFilter(file);
-        ArrayList<Rule> rules = new ArrayList<Rule>();
-        rules.add(new ContainsKeyword("Selenium"));
-        rules.add(new ContainsKeyword("Appium"));
-        rules.add(new ContainsKeyword("Java"));
-        Assert.assertTrue(filter.isSelected(rules));
+        DocumentReader reader = new DocumentReader();
+        ArrayList<Rule> listOfRules = new ArrayList<Rule>();
+        listOfRules.add(new ContainsKeyword("Selenium"));
+        listOfRules.add(new ContainsKeyword("Appium"));
+        listOfRules.add(new ContainsKeyword("Java"));
+        Rule rule = new AllRules(listOfRules);
+        Assert.assertTrue(rule.interpret(reader.getDocumentText(file)));
     }
 }
