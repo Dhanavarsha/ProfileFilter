@@ -1,4 +1,4 @@
-import documentReader.DocumentReader;
+import documentReader.DocumentTypeClassifier;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import rules.*;
@@ -10,7 +10,7 @@ public class ProfileFilterTest {
     @Test
     public void testRulesIntegration() {
         File file = new File("src/main/resources/resumes/DD_Resume.doc");
-        String documentText = DocumentReader.getDocumentText(file);
+        String documentText = DocumentTypeClassifier.getDocumentText(file);
 
         Rule rule1 = getRuleForMandatorySkills();
         Rule rule2 = getRuleForCITools();
