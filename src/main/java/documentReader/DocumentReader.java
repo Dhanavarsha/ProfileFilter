@@ -1,5 +1,8 @@
 package documentReader;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.PDFTextStripperByArea;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -35,6 +38,20 @@ public class DocumentReader {
                     text = text + paragraph.getText();
                 }
                 fis.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return text;
+        } else if (s.equals("pdf")) {
+            try {
+                PDDocument document = PDDocument.load(file);
+                document.getClass();
+                if (!document.isEncrypted()) {
+                    PDFTextStripperByArea stripper = new PDFTextStripperByArea();
+                    stripper.setSortByPosition(true);
+                    PDFTextStripper textStripper = new PDFTextStripper();
+                    text = textStripper.getText(document).trim();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

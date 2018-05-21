@@ -14,5 +14,8 @@ public class DocumentReaderTest {
 
         File docxFile = new File("src/main/resources/test.docx");
         Assert.assertEquals(DocumentReader.getDocumentText(docxFile).trim(), "test");
+
+        File pdfFile = new File("src/main/resources/sample.pdf");
+        Assert.assertEquals(DocumentReader.getDocumentText(pdfFile), "SAMPLE PDF FILE");
     }
 }
