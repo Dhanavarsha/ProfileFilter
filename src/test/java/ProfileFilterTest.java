@@ -5,7 +5,7 @@ import rules.*;
 import java.io.File;
 import java.util.ArrayList;
 
-public class ProfileFilterTests {
+public class ProfileFilterTest {
     @Test
     public void testRulesIntegration() {
         File file = new File("src/main/resources/DD_Resume.doc");
