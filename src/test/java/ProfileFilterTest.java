@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class ProfileFilterTest {
     @Test
     public void testRulesIntegration() {
-        File file = new File("src/main/resources/DD_Resume.doc");
+        File file = new File("src/main/resources/resumes/DD_Resume.doc");
         String documentText = DocumentReader.getDocumentText(file);
 
         Rule rule1 = getRuleForMandatorySkills();
