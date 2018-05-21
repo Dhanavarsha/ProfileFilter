@@ -9,7 +9,10 @@ import java.io.File;
 public class DocumentReaderTest {
     @Test
     public void testGetDocumentText() throws Exception {
-        File file = new File("src/main/resources/Test.doc");
-        Assert.assertEquals(DocumentReader.getDocumentText(file).trim(), "Hello World!");
+        File docFile = new File("src/main/resources/Test.doc");
+        Assert.assertEquals(DocumentReader.getDocumentText(docFile).trim(), "Hello World!");
+
+        File docxFile = new File("src/main/resources/test.docx");
+        Assert.assertEquals(DocumentReader.getDocumentText(docxFile).trim(), "test");
     }
 }
