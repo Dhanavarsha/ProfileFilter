@@ -1,9 +1,10 @@
+package documentReader;
+
+import documentReader.DocumentReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.File;
-
-import static org.testng.Assert.*;
 
 public class DocumentReaderTest {
     @Test
