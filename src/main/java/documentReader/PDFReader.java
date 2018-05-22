@@ -7,14 +7,10 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
 import java.io.File;
 
 public class PDFReader implements DocumentReader {
-    private File file = null;
-    private String text = "";
 
-    public PDFReader(File file) {
-        this.file = file;
-    }
-
-    public String getDocumentText() {
+    @Override
+    public String getDocumentText(File file) {
+        String text = "";
         try {
             PDDocument document = PDDocument.load(file);
             document.getClass();
@@ -28,5 +24,10 @@ public class PDFReader implements DocumentReader {
             e.printStackTrace();
         }
         return text;
+    }
+
+    @Override
+    public String getSupportedExtension() {
+        return "pdf";
     }
 }

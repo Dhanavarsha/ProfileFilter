@@ -1,19 +1,19 @@
 package documentReader;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.List;
 
 public class DocumentTypeClassifier {
 
-
-
-    public static String getDocumentText(File file) {
+    public static String getDocumentText(File file, List<DocumentReader> readers) {
         String fileExtension = getFileExtension(file);
-        return Optional.ofNullable(documentReaders(file).get(fileExtension))
-                .map(documentReader -> documentReader.getDocumentText())
-                .orElse("");
+
+        for (DocumentReader reader : readers) {
+            if (reader.getSupportedExtension().equals(fileExtension)) {
+                return reader.getDocumentText(file);
+            }
+        }
+        return "";
     }
 
     private static String getFileExtension(File file) {
@@ -23,13 +23,5 @@ public class DocumentTypeClassifier {
         } catch (Exception e) {
             return "";
         }
-    }
-
-    private static Map<String, DocumentReader> documentReaders(File file) {
-        HashMap<String, DocumentReader> map = new HashMap<String, DocumentReader>();
-        map.put("doc", new DocReader(file));
-        map.put("docx", new DocxReader(file));
-        map.put("pdf", new PDFReader(file));
-        return map;
     }
 }

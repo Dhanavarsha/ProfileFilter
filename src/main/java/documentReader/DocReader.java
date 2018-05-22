@@ -7,14 +7,9 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class DocReader implements DocumentReader {
-    private File file = null;
-    private String text = "";
 
-    public DocReader(File file) {
-        this.file = file;
-    }
-
-    public String getDocumentText() {
+    public String getDocumentText(File file) {
+        String text = "";
         try {
             FileInputStream fis = new FileInputStream(file);
             HWPFDocument document = new HWPFDocument(fis);
@@ -25,5 +20,10 @@ public class DocReader implements DocumentReader {
             e.printStackTrace();
         }
         return text;
+    }
+
+    @Override
+    public String getSupportedExtension() {
+        return "doc";
     }
 }

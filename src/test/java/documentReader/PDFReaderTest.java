@@ -9,7 +9,6 @@ public class PDFReaderTest {
     @Test
     public void testGetDocumentText() throws Exception {
         File pdfFile = new File("src/main/resources/sample.pdf");
-        Assert.assertEquals(DocumentTypeClassifier.getDocumentText(pdfFile), "SAMPLE PDF FILE");
-        Assert.assertFalse(DocumentTypeClassifier.getDocumentText(pdfFile).equalsIgnoreCase("SAMPLE"));
+        Assert.assertEquals(new PDFReader().getDocumentText(pdfFile), "SAMPLE PDF FILE");
     }
 }

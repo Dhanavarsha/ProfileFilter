@@ -8,14 +8,10 @@ import java.io.FileInputStream;
 import java.util.List;
 
 public class DocxReader implements DocumentReader {
-    private File file = null;
-    private String text = "";
 
-    public DocxReader(File file) {
-        this.file = file;
-    }
-
-    public String getDocumentText() {
+    @Override
+    public String getDocumentText(File file) {
+        String text = "";
         try {
             FileInputStream fis = new FileInputStream(file);
             XWPFDocument document = new XWPFDocument(fis);
@@ -28,5 +24,10 @@ public class DocxReader implements DocumentReader {
             e.printStackTrace();
         }
         return text;
+    }
+
+    @Override
+    public String getSupportedExtension() {
+        return "docx";
     }
 }

@@ -1,16 +1,17 @@
-import documentReader.DocumentTypeClassifier;
+import documentReader.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import rules.*;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileFilterTest {
     @Test
     public void testRulesIntegration() {
         File file = new File("src/main/resources/resumes/DD_Resume.doc");
-        String documentText = DocumentTypeClassifier.getDocumentText(file);
+        String documentText = DocumentTypeClassifier.getDocumentText(file, getDocumentReadersList());
 
         Rule rule1 = getRuleForMandatorySkills();
         Rule rule2 = getRuleForCITools();
@@ -30,6 +31,14 @@ public class ProfileFilterTest {
         Rule selectionRule2 = new AllRules(selectionRules);
 
         Assert.assertFalse(selectionRule2.interpret(documentText));
+    }
+
+    private List<DocumentReader> getDocumentReadersList() {
+        List<DocumentReader> readerList = new ArrayList<>();
+        readerList.add(new DocxReader());
+        readerList.add(new PDFReader());
+        readerList.add(new DocReader());
+        return readerList;
     }
 
     private Rule getRuleForCertification() {
