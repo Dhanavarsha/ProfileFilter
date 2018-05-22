@@ -11,7 +11,7 @@ public class ProfileFilterTest {
     @Test
     public void testRulesIntegration() {
         File file = new File("src/main/resources/resumes/DD_Resume.doc");
-        String documentText = DocumentTypeClassifier.getDocumentText(file, getDocumentReadersList());
+        String documentText = MainDocumentReader.getDocumentText(file, getDocumentReadersList());
 
         Rule rule1 = getRuleForMandatorySkills();
         Rule rule2 = getRuleForCITools();

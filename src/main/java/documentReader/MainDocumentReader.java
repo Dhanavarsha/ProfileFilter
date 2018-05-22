@@ -3,7 +3,7 @@ package documentReader;
 import java.io.File;
 import java.util.List;
 
-public class DocumentTypeClassifier {
+public class MainDocumentReader {
 
     public static String getDocumentText(File file, List<DocumentReader> readers) {
         String fileExtension = getFileExtension(file);
