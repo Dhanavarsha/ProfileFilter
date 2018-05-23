@@ -1,6 +1,8 @@
 package documentReader;
 
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFHeader;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
 import java.io.File;
@@ -15,10 +17,8 @@ public class DocxReader implements DocumentReader {
         try {
             FileInputStream fis = new FileInputStream(file);
             XWPFDocument document = new XWPFDocument(fis);
-            List<XWPFParagraph> paragraphs = document.getParagraphs();
-            for (XWPFParagraph paragraph : paragraphs) {
-                text = text + paragraph.getText();
-            }
+            XWPFWordExtractor wordExtractor = new XWPFWordExtractor(document);
+            text = wordExtractor.getText();
             fis.close();
         } catch (Exception e) {
             e.printStackTrace();
