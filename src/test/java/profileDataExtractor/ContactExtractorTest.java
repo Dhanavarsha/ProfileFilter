@@ -26,4 +26,11 @@ public class ContactExtractorTest {
         Assert.assertTrue(new ContactExtractor().getDataType().equalsIgnoreCase("Contact"));
     }
 
+    @Test
+    public void testGetData() {
+        String contactsInDifferentFormat = "ContactNo:+91-8009094960, Phone No: (+91) 9164947767,9892016546,+91-8009094960, +91 959";
+        Assert.assertEquals(new ContactExtractor().getData(contactsInDifferentFormat).trim(), "+91-8009094960 (+91) 9164947767 9892016546 +91-8009094960");
+        String emptyContactsText = "Phone :    Contact : ";
+        Assert.assertTrue(new ContactExtractor().getData(emptyContactsText).equals("Unable to find data."));
+    }
 }
