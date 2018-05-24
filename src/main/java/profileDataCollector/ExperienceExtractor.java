@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GetExperience implements DataCollector {
+public class ExperienceExtractor implements DataExtractor {
 
     @Override
     public String getDataType() {

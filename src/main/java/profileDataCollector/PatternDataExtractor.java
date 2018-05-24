@@ -3,7 +3,7 @@ package profileDataCollector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-abstract class PatternDataCollector implements DataCollector {
+abstract class PatternDataExtractor implements DataExtractor {
 
     abstract String getPattern();
 

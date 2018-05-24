@@ -1,6 +1,6 @@
 package profileDataCollector;
 
-public interface DataCollector {
+public interface DataExtractor {
     String getDataType();
     String getData(String documentText);
 }
