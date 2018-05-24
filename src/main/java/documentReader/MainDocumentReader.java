@@ -1,6 +1,6 @@
 package documentReader;
 
-import org.apache.poi.UnsupportedFileFormatException;
+import documentReader.exceptions.UnsupportedFileException;
 
 import java.io.File;
 import java.util.List;

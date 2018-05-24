@@ -1,4 +1,5 @@
 import documentReader.*;
+import documentReader.exceptions.UnsupportedFileException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import rules.*;
