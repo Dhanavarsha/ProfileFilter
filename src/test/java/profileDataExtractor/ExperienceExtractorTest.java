@@ -1,4 +1,4 @@
-package profileDataCollector;
+package profileDataExtractor;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

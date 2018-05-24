@@ -1,6 +1,6 @@
-package profileDataCollector;
+package profileDataExtractor;
 
-class Contact extends PatternDataCollector {
+class Contact extends PatternDataExtractor {
 
     @Override
     String getPattern() {

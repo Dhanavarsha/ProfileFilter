@@ -1,4 +1,4 @@
-package profileDataCollector;
+package profileDataExtractor;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

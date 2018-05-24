@@ -1,4 +1,4 @@
-package profileDataCollector;
+package profileDataExtractor;
 
 public interface DataExtractor {
     String getDataType();
