@@ -12,15 +12,13 @@ import static org.mockito.Mockito.when;
 
 public class MainDocumentReaderTest {
     @Test
-    public void testGetDocumentText() throws Exception {
+    public void testGetDocumentText() throws Exception, UnsupportedFileException {
         File pdfFile = new File("sample_random.pdf");
-        File xlsFile = new File("sample_random.xls");
         ArrayList<DocumentReader> readerList = new ArrayList<>();
         readerList.add(createMockedReader("pdf", "PDF Sring"));
         readerList.add(createMockedReader("doc", "Doc String"));
         readerList.add(createMockedReader("docx", "Docx String"));
         Assert.assertEquals(MainDocumentReader.getDocumentText(pdfFile, readerList), "PDF Sring");
-        Assert.assertEquals(MainDocumentReader.getDocumentText(xlsFile, readerList), "");
     }
 
     private DocumentReader createMockedReader(String mockExtension, String mockText) {

@@ -1,11 +1,13 @@
 package documentReader;
 
+import org.apache.poi.UnsupportedFileFormatException;
+
 import java.io.File;
 import java.util.List;
 
 public class MainDocumentReader {
 
-    public static String getDocumentText(File file, List<DocumentReader> readers) {
+    public static String getDocumentText(File file, List<DocumentReader> readers) throws UnsupportedFileException {
         String fileExtension = getFileExtension(file);
 
         for (DocumentReader reader : readers) {
@@ -13,7 +15,7 @@ public class MainDocumentReader {
                 return reader.getDocumentText(file);
             }
         }
-        return "";
+        throw new UnsupportedFileException("Reader for given file format not available");
     }
 
     private static String getFileExtension(File file) {

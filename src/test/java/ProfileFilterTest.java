@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ProfileFilterTest {
     @Test
-    public void testRulesIntegration() {
+    public void testRulesIntegration() throws UnsupportedFileException {
         File file = new File("src/main/resources/resumes/DD_Resume.doc");
         String documentText = MainDocumentReader.getDocumentText(file, getDocumentReadersList());
 
