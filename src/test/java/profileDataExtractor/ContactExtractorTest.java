@@ -3,11 +3,8 @@ package profileDataExtractor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static org.testng.Assert.*;
 
 public class ContactExtractorTest {
     @Test
