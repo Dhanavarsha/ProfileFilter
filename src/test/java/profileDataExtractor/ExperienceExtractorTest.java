@@ -13,6 +13,6 @@ public class ExperienceExtractorTest {
         Assert.assertEquals(new ExperienceExtractor().getData(sampleText2), "5");
 
         String sampleText3 = "Experience on Selenium & Appium";
-        Assert.assertEquals(new ExperienceExtractor().getData(sampleText3), "Experience years not mentioned");
+        Assert.assertEquals(new ExperienceExtractor().getData(sampleText3), "Unable to retrieve experience");
     }
 }

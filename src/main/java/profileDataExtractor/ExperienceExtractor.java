@@ -36,7 +36,7 @@ public class ExperienceExtractor implements DataExtractor {
         }
         if (experienceYear != null) {
             return experienceYear.getMatchPattern();
-        } else return "Experience years not mentioned";
+        } else return "Unable to retrieve experience";
     }
 
     private ArrayList<ExpressionInfo> getIndexesOf(String expression, String text) {
