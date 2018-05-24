@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GetExperience {
+public class GetExperience implements DataCollector {
 
-    public String getExperience(String text) {
+    @Override
+    public String getDataType() {
+        return "Experience";
+    }
+
+    @Override
+    public String getData(String documentText) {
         String word = "years";
-        ArrayList<ExpressionInfo> wordIndexes = getIndexesOf(word, text);
+        ArrayList<ExpressionInfo> wordIndexes = getIndexesOf(word, documentText);
         String patternToExtractDigits = "\\d+\\.?\\d*";
-        ArrayList<ExpressionInfo> numberIndexes = getIndexesOf(patternToExtractDigits, text);
+        ArrayList<ExpressionInfo> numberIndexes = getIndexesOf(patternToExtractDigits, documentText);
         return getMinimumDistance(wordIndexes, numberIndexes);
     }
 
