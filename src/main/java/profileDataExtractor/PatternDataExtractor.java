@@ -12,8 +12,12 @@ abstract class PatternDataExtractor implements DataExtractor {
         Pattern pattern = Pattern.compile(getPattern());
         Matcher matcher = pattern.matcher(documentText);
         if (matcher.find()) {
-            return matcher.group();
-        }
-        return "";
+            matcher.reset();
+            String data = "";
+            while (matcher.find()) {
+                data += matcher.group() + " ";
+            }
+            return data;
+        } else return "Unable to find data.";
     }
 }
