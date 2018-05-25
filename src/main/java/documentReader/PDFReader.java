@@ -11,6 +11,7 @@ public class PDFReader implements DocumentReader {
     @Override
     public String getDocumentText(File file) {
         String text = "";
+
         try {
             PDDocument document = PDDocument.load(file);
             document.getClass();
@@ -19,6 +20,7 @@ public class PDFReader implements DocumentReader {
                 stripper.setSortByPosition(true);
                 PDFTextStripper textStripper = new PDFTextStripper();
                 text = textStripper.getText(document).trim();
+                document.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
