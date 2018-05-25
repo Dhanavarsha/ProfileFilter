@@ -4,9 +4,10 @@ import documentReader.*;
 import documentReader.exceptions.UnsupportedFileException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import profileDataExtractor.ExperienceExtractor;
 import rules.*;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,5 +67,27 @@ public class ProfileFilterTest {
         mandatorySkills.add(new ContainsKeyword("REST"));
         mandatorySkills.add(new ContainsKeyword("API Testing"));
         return new AllRules(mandatorySkills);
+    }
+
+    @Test
+    public void testGetExperienceForMultipleResumes() {
+        File resumesFolder = new File("src/main/resources/resumes");
+        ArrayList<DocumentReader> readerList = new ArrayList<>();
+        readerList.add(new DocReader());
+        readerList.add(new PDFReader());
+        readerList.add(new DocxReader());
+        for (File file : resumesFolder.listFiles()) {
+            String documentText = null;
+            try {
+                documentText = MainDocumentReader.getDocumentText(file, readerList);
+                if (!documentText.equals("")) {
+                    ExperienceExtractor extractor = new ExperienceExtractor();
+                    String experienceString = extractor.getData(documentText);
+                    Assert.assertEquals(Float.parseFloat(experienceString), 5, 5);
+                }
+            } catch (UnsupportedFileException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
