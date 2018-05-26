@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class OutputFileGenerator {
-    public static void writeToFile(String nameOnFile) {
+    public static void writeToFile(String nameOnFile, String profileInfo) {
 
         File directory = new File(getOutputFolderPath());
         if (!directory.exists()) {
@@ -17,7 +17,7 @@ public class OutputFileGenerator {
         try {
             FileWriter fileWriter = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fileWriter);
-            bw.write(nameOnFile);
+            bw.write(profileInfo);
             bw.close();
         } catch (Exception e) {
             e.printStackTrace();
