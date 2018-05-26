@@ -1,6 +1,6 @@
 package profileDataExtractor;
 
-class ContactExtractor extends PatternDataExtractor {
+public class ContactExtractor extends PatternDataExtractor {
 
     private static final String COUNTRY_CODE = "+91";
 
