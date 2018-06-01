@@ -1,0 +1,16 @@
+.hbox {
+    -fx-background-color: #FFF8DC;
+    -fx-padding: 5;
+    -fx-spacing: 10;
+}
+
+.vBox {
+    -fx-background-color: #FFF8DC;
+    -fx-padding: 5;
+    -fx-spacing: 10;
+}
+
+.button {
+    -fx-padding: 5;
+    -fx-spacing: 10;
+}
