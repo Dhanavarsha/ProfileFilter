@@ -68,26 +68,4 @@ public class ProfileFilterTest {
         mandatorySkills.add(new ContainsKeyword("API Testing"));
         return new AllRules(mandatorySkills);
     }
-
-    @Test
-    public void testGetExperienceForMultipleResumes() {
-        File resumesFolder = new File("src/main/resources/resumes");
-        ArrayList<DocumentReader> readerList = new ArrayList<>();
-        readerList.add(new DocReader());
-        readerList.add(new PDFReader());
-        readerList.add(new DocxReader());
-        for (File file : resumesFolder.listFiles()) {
-            String documentText = null;
-            try {
-                documentText = MainDocumentReader.getDocumentText(file, readerList);
-                if (!documentText.equals("")) {
-                    ExperienceExtractor extractor = new ExperienceExtractor();
-                    String experienceString = extractor.getData(documentText);
-                    Assert.assertEquals(Float.parseFloat(experienceString), 5, 5);
-                }
-            } catch (UnsupportedFileException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
