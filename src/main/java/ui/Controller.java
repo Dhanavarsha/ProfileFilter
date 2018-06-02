@@ -57,8 +57,6 @@ public class Controller implements SkillSet {
 
         if (!file.isPresent()) {
             directorySelectionAlertLabel.setText("Please select directory");
-        } else if (file.get().equals(" No Directory Selected.")) {
-            directorySelectionAlertLabel.setText("Please select directory");
         } else {
             new Application().parseProfiles(file.get(), new AllRules(selectionRules));
         }
