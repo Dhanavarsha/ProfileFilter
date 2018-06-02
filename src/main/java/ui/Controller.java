@@ -23,13 +23,13 @@ public class Controller implements SkillSet {
     private ArrayList<SkillSetView> skillSetViews = new ArrayList<>();
 
     @FXML
-    private Label directorySelectionAlertLabel;
+    private Label selectDirectoryAlertLabel;
 
     @FXML
     VBox mainVBox;
 
     @FXML
-    Label profilesDirectory;
+    Label directory;
 
     @FXML
     Button execute;
@@ -42,24 +42,27 @@ public class Controller implements SkillSet {
         chooser.setTitle("Choose Profiles Folder location");
         File chosenFile = chooser.showDialog(((Node) actionEvent.getTarget()).getScene().getWindow());
         file = Optional.ofNullable(chosenFile);
-        profilesDirectory.setText("Profiles Folder Location : "
+        directory.setText("Profiles Folder Location : "
                 + file.map((Function<File, Object>) File::getAbsolutePath).orElse(" No Directory Selected."));
         if (file.isPresent() && !file.get().equals(" No Directory Selected.")) {
-            directorySelectionAlertLabel.setText("");
+            selectDirectoryAlertLabel.setText("");
         }
     }
 
     public void executeRule() {
-        ArrayList<Rule> selectionRules = new ArrayList<>();
-        for (SkillSetView skillSetView : skillSetViews) {
-            selectionRules.add(skillSetView.createRule());
-        }
-
         if (!file.isPresent()) {
-            directorySelectionAlertLabel.setText("Please select directory");
+            selectDirectoryAlertLabel.setText("Please select directory");
         } else {
-            new Application().parseProfiles(file.get(), new AllRules(selectionRules));
+            new Application().parseProfiles(file.get(), getSelectionRule());
         }
+    }
+
+    private Rule getSelectionRule() {
+        ArrayList<Rule> combinedSkillSetRules = new ArrayList<>();
+        for (SkillSetView skillSetView : skillSetViews) {
+            combinedSkillSetRules.add(skillSetView.createRule());
+        }
+        return new AllRules(combinedSkillSetRules);
     }
 
     @Override
