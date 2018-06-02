@@ -42,8 +42,11 @@ public class Controller implements SkillSet {
         chooser.setTitle("Choose Profiles Folder location");
         File chosenFile = chooser.showDialog(((Node) actionEvent.getTarget()).getScene().getWindow());
         file = Optional.ofNullable(chosenFile);
-        profilesDirectory.setText(" Profiles Folders Location : "
+        profilesDirectory.setText("Profiles Folder Location : "
                 + file.map((Function<File, Object>) File::getAbsolutePath).orElse(" No Directory Selected."));
+        if (file.isPresent() && !file.get().equals(" No Directory Selected.")) {
+            directorySelectionAlertLabel.setText("");
+        }
     }
 
     public void executeRule() {
@@ -53,7 +56,9 @@ public class Controller implements SkillSet {
         }
 
         if (!file.isPresent()) {
-            directorySelectionAlertLabel.setText("Please enter directory");
+            directorySelectionAlertLabel.setText("Please select directory");
+        } else if (file.get().equals(" No Directory Selected.")) {
+            directorySelectionAlertLabel.setText("Please select directory");
         } else {
             new Application().parseProfiles(file.get(), new AllRules(selectionRules));
         }
