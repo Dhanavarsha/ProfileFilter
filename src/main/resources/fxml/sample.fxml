@@ -7,13 +7,14 @@
 <GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1"
           xmlns="http://javafx.com/javafx/8.0.121" fx:controller="ui.Controller">
     <VBox fillWidth="true" spacing="10">
-        <Label fx:id="directorySelectionAlertLabel" textFill="crimson"/>
+        <Label fx:id="selectDirectoryAlertLabel" textFill="crimson"/>
         <HBox fillHeight="false" spacing="10">
             <Button layoutY="10" layoutX="10" text="Browse" onAction="#browseProfileDirectory"/>
-            <Label layoutY="10" layoutX="10" styleClass=".button" text="Directory Path" textAlignment="CENTER"
-                   fx:id="profilesDirectory"/>
+            <Label layoutY="10" layoutX="10" styleClass=".button" text="Profiles Folder Location : "
+                   textAlignment="CENTER" translateY="5" textFill="blue"
+                   fx:id="directory"/>
         </HBox>
-        <VBox fillWidth="true" fx:id="mainVBox"/>
+        <VBox fillWidth="true" fx:id="mainVBox" spacing="30"/>
         <Button layoutY="10" layoutX="10" text="Execute" fx:id="execute" onAction="#executeRule"/>
     </VBox>
 </GridPane>

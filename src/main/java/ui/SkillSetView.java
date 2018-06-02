@@ -26,10 +26,10 @@ public class SkillSetView extends VBox implements Skill {
     SkillSetView(SkillSet skillSet) {
         super();
         this.fillWidthProperty().setValue(true);
-        this.setSpacing(5);
+        this.setSpacing(10);
 
         HBox hBox = new HBox();
-        hBox.setSpacing(20);
+        hBox.setSpacing(17);
 
         createSelectResumeLabel(hBox);
         createAndOrConditionChoiceBox(hBox);

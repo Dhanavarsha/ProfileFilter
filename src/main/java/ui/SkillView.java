@@ -15,7 +15,7 @@ class SkillView extends HBox {
 
     SkillView(Skill skill) {
         super();
-        this.setSpacing(20);
+        this.setSpacing(15);
 
         this.getChildren().add(new Label("Skill : "));
 
