@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1"
           xmlns="http://javafx.com/javafx/8.0.121" fx:controller="ui.Controller">
     <ScrollPane vbarPolicy="ALWAYS" hbarPolicy="NEVER">
@@ -12,9 +13,8 @@
             <Label fx:id="selectUserInputAlertLabel" textFill="crimson"/>
             <HBox fillHeight="false" spacing="10">
                 <Button layoutY="10" layoutX="10" text="Browse" onAction="#browseProfileDirectory"/>
-                <Label layoutY="10" layoutX="10" styleClass=".button" text="Profiles Folder Location : "
-                       textAlignment="CENTER" translateY="5" textFill="blue"
-                       fx:id="directory"/>
+                <TextField layoutY="10" layoutX="10" fx:id="directoryTextField" translateX="20"
+                           prefWidth="500"/>
             </HBox>
             <VBox fillWidth="true" fx:id="mainVBox" spacing="30"/>
             <Button layoutY="10" layoutX="10" text="Execute" fx:id="execute" onAction="#executeRule"/>

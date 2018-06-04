@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import rules.AllRules;
@@ -29,7 +30,7 @@ public class Controller implements SkillSet {
     VBox mainVBox;
 
     @FXML
-    Label directory;
+    TextField directoryTextField;
 
     @FXML
     Button execute;
@@ -42,8 +43,7 @@ public class Controller implements SkillSet {
         chooser.setTitle("Choose Profiles Folder location");
         File chosenFile = chooser.showDialog(((Node) actionEvent.getTarget()).getScene().getWindow());
         file = Optional.ofNullable(chosenFile);
-        directory.setText("Profiles Folder Location : "
-                + file.map((Function<File, Object>) File::getAbsolutePath).orElse(" No Directory Selected."));
+        directoryTextField.setText(file.map((Function<File, Object>) File::getAbsolutePath).orElse(" No Directory Selected.").toString());
         if (file.isPresent() && !file.get().equals(" No Directory Selected.")) {
             selectUserInputAlertLabel.setText("");
         }
