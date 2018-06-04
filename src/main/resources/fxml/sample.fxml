@@ -7,7 +7,7 @@
 <GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1"
           xmlns="http://javafx.com/javafx/8.0.121" fx:controller="ui.Controller">
     <VBox fillWidth="true" spacing="10">
-        <Label fx:id="selectDirectoryAlertLabel" textFill="crimson"/>
+        <Label fx:id="selectUserInputAlertLabel" textFill="crimson"/>
         <HBox fillHeight="false" spacing="10">
             <Button layoutY="10" layoutX="10" text="Browse" onAction="#browseProfileDirectory"/>
             <Label layoutY="10" layoutX="10" styleClass=".button" text="Profiles Folder Location : "

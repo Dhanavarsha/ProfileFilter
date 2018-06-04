@@ -99,17 +99,8 @@ public class SkillSetView extends VBox implements Skill {
         hBox.getChildren().add(removeSkillSetButton);
     }
 
-    @Override
-    public void addSkill() {
-        SkillView skillView = new SkillView(this);
-        this.getChildren().add(skillView);
-        skillViews.add(skillView);
-    }
-
-    @Override
-    public void removeSkill(SkillView skillView) {
-        this.getChildren().remove(skillView);
-        skillViews.remove(skillView);
+    boolean areSkillsPresent() {
+        return (skillViews.size() != 0 && skillViews.get(0).areSkillDetailsPresent());
     }
 
     Rule createRule() {
@@ -123,5 +114,18 @@ public class SkillSetView extends VBox implements Skill {
             return new AnyRule(rules);
         }
         return null;
+    }
+
+    @Override
+    public void addSkill() {
+        SkillView skillView = new SkillView(this);
+        this.getChildren().add(skillView);
+        skillViews.add(skillView);
+    }
+
+    @Override
+    public void removeSkill(SkillView skillView) {
+        this.getChildren().remove(skillView);
+        skillViews.remove(skillView);
     }
 }

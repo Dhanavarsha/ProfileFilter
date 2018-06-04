@@ -23,7 +23,7 @@ public class Controller implements SkillSet {
     private ArrayList<SkillSetView> skillSetViews = new ArrayList<>();
 
     @FXML
-    private Label selectDirectoryAlertLabel;
+    private Label selectUserInputAlertLabel;
 
     @FXML
     VBox mainVBox;
@@ -45,15 +45,19 @@ public class Controller implements SkillSet {
         directory.setText("Profiles Folder Location : "
                 + file.map((Function<File, Object>) File::getAbsolutePath).orElse(" No Directory Selected."));
         if (file.isPresent() && !file.get().equals(" No Directory Selected.")) {
-            selectDirectoryAlertLabel.setText("");
+            selectUserInputAlertLabel.setText("");
         }
     }
 
     public void executeRule() {
         if (!file.isPresent()) {
-            selectDirectoryAlertLabel.setText("Please select directory");
+            selectUserInputAlertLabel.setText("Please select directory");
         } else {
-            new Application().parseProfiles(file.get(), getSelectionRule());
+            if (skillSetViews.get(0).areSkillsPresent()) {
+                new Application().parseProfiles(file.get(), getSelectionRule());
+            } else {
+                selectUserInputAlertLabel.setText("Please add skill details and then click on Execute");
+            }
         }
     }
 

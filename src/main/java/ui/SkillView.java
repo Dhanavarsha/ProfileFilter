@@ -63,6 +63,11 @@ class SkillView extends HBox {
         return button;
     }
 
+    boolean areSkillDetailsPresent() {
+        return (!enterSkillTextField.getText().equals(null) && !enterSkillTextField.getText().equals("")) ||
+                (!enterWordCountTextField.getText().equals(null) && !enterWordCountTextField.getText().equals(""));
+    }
+
     Rule createRule() {
         final String word = enterSkillTextField.getText();
         final int count = Integer.parseInt(enterWordCountTextField.getText());
