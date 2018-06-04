@@ -3,11 +3,6 @@ package rules;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.util.ArrayList;
-
-import static org.testng.Assert.*;
-
 public class MinimumWordCountTest {
     @Test
     public void testInterpret() throws Exception {
@@ -17,5 +12,4 @@ public class MinimumWordCountTest {
                 "selenium also favors assertion-free page objects."));
         Assert.assertFalse(rule.interpret("Selenium automates browsers. That's it!"));
     }
-
 }

@@ -18,11 +18,14 @@ public class MinimumWordCount implements Rule {
     private int getCountOfWordOccurrence(String documentText) {
         int count = 0;
         Scanner scanner = new Scanner(documentText);
-        String lowerCasedWord = word.toLowerCase();
+        String lowerCaseWord = word.toLowerCase();
         while (scanner.hasNextLine()) {
-            String nextLine = scanner.nextLine();
-            if (nextLine.toLowerCase().contains(lowerCasedWord))
-                count++;
+            String nextLine = scanner.nextLine().toLowerCase();
+            String words[] = nextLine.split("\\s");
+            for (String word : words) {
+                if (word.contains(lowerCaseWord))
+                    count++;
+            }
         }
         return count;
     }
