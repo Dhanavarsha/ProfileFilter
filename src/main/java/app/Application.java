@@ -23,14 +23,14 @@ public class Application {
 
     public void parseProfiles(File resumeFolder, Rule selectionRule) {
         String folderLocation = resumeFolder.getAbsolutePath();
-        File fileToBeWritten = new File(folderLocation + File.separator + "DONE" + getTimeStamp() + ".txt");
+        File fileToBeWritten = new File(folderLocation + File.separator + "_DONE" + getTimeStamp() + ".txt");
         StringBuilder allProfilesInfo = new StringBuilder();
 
         for (File file : resumeFolder.listFiles()) {
             try {
                 String documentText = MainDocumentReader.getDocumentText(file, getDocumentReadersList());
                 if (selectionRule.interpret(documentText)) {
-                    allProfilesInfo.append(composer.getDataType()).append("\n\n").append(composer.getData(documentText));
+                    allProfilesInfo.append(composer.getDataType()).append("\n\n").append(composer.getData(documentText)).append("\n\n");
                     FileUtils.copyFile(file, getDestinationForSelectedProfile(file, folderLocation));
                 } else {
                     FileUtils.copyFile(file, getDestinationForRejectedProfile(file, folderLocation));
@@ -42,6 +42,7 @@ public class Application {
             }
         }
         writeToFile(fileToBeWritten, allProfilesInfo.toString());
+        fileToBeWritten.renameTo(new File(folderLocation + "/selectedProfiles/" + fileToBeWritten.getName()));
     }
 
     private String getTimeStamp() {
