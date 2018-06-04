@@ -19,9 +19,9 @@ public class MinimumWordCount implements Rule {
         int count = 0;
         Scanner scanner = new Scanner(documentText);
         String lowerCasedWord = word.toLowerCase();
-        while (scanner.hasNext()) {
-            String nextToken = scanner.next();
-            if (nextToken.toLowerCase().contains(lowerCasedWord))
+        while (scanner.hasNextLine()) {
+            String nextLine = scanner.nextLine();
+            if (nextLine.toLowerCase().contains(lowerCasedWord))
                 count++;
         }
         return count;
