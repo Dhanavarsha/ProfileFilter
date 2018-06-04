@@ -4,14 +4,13 @@ import documentReader.*;
 import documentReader.exceptions.UnsupportedFileException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import profileDataExtractor.ExperienceExtractor;
 import rules.*;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileFilterTest {
+public class RulesIntegrationTest {
     @Test
     public void testRulesIntegration() throws UnsupportedFileException {
         File file = new File("src/main/resources/resumes/DD_Resume.doc");
