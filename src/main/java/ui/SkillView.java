@@ -1,17 +1,21 @@
 package ui;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Paint;
 import rules.MinimumWordCount;
 import rules.Rule;
 
 class SkillView extends HBox {
     private final TextField enterSkillTextField;
     private final TextField enterWordCountTextField;
+    private Label wordCountAlertLabel;
 
     SkillView(Skill skill) {
         super();
@@ -23,10 +27,27 @@ class SkillView extends HBox {
         this.getChildren().add(enterSkillTextField);
 
         enterWordCountTextField = getTextField("Enter Word Count");
+        enterWordCountTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d+"))
+                    wordCountAlertLabel.setText("Word Count should be numeric value");
+                else {
+                    wordCountAlertLabel.setText("");
+                }
+            }
+        });
         this.getChildren().add(enterWordCountTextField);
 
         createAddAnotherSkillButton(this, skill);
         createRemoveSkillButton(this, skill);
+        createWordCountAlertLabel(this);
+    }
+
+    private void createWordCountAlertLabel(SkillView skillView) {
+        wordCountAlertLabel = new Label();
+        wordCountAlertLabel.setTextFill(Paint.valueOf("#DC143C"));
+        skillView.getChildren().add(wordCountAlertLabel);
     }
 
     private void createAddAnotherSkillButton(SkillView skillView, Skill skill) {
