@@ -55,8 +55,9 @@ public class SkillSetView extends VBox implements Skill {
     private void createAndOrConditionChoiceBox(HBox hBox) {
         andOrConditionChoiceBox = new ChoiceBox<String>(FXCollections.observableArrayList(
                 "Select a condition",
-                "All of the conditions are met",
-                "Any of the conditions are met"));
+                "All of the Skills are met",
+                "Any of the Skills are met"));
+        andOrConditionChoiceBox.setStyle("choice-box");
         andOrConditionChoiceBox.setValue("Select a condition");
         andOrConditionChoiceBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
