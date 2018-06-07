@@ -9,26 +9,30 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
-    <ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" prefWidth="1000" vbarPolicy="ALWAYS"
-                stylesheets="@layoutstyles.css">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
+    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefWidth="1000" stylesheets="@layoutstyles.css" vbarPolicy="ALWAYS">
         <VBox fillWidth="true" spacing="20" styleClass="vBox">
-            <Label fx:id="selectUserInputAlertLabel" textFill="crimson"/>
+            <Label fx:id="selectUserInputAlertLabel" textFill="crimson" />
             <HBox fillHeight="false" spacing="10">
-                <Button layoutX="10" layoutY="10" onAction="#browseProfileDirectory" text="Browse"/>
-                <TextField fx:id="directoryTextField" layoutX="10" layoutY="10" prefWidth="550"
-                           style="-fx-text-inner-color: blue;" translateX="20"/>
+                <Button layoutX="10" layoutY="10" onAction="#browseProfileDirectory" text="Browse" />
+                <TextField fx:id="directoryTextField" layoutX="10" layoutY="10" prefWidth="556" style="-fx-text-inner-color: blue;" translateX="20" />
             </HBox>
-            <VBox fx:id="mainVBox" fillWidth="true" spacing="30"/>
-            <Button fx:id="execute" layoutX="10" layoutY="10" onAction="#executeRule" text="Execute"/>
+            <VBox fx:id="mainVBox" fillWidth="true" spacing="30" />
+            <HBox>
+                <Button fx:id="execute" layoutX="10" layoutY="10" onAction="#executeRule" text="Execute" />
+                <Label fx:id="executionMsg" textAlignment="CENTER" textFill="blue">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            </HBox>
         </VBox>
     </ScrollPane>
     <columnConstraints>
-        <ColumnConstraints/>
+        <ColumnConstraints />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints/>
+        <RowConstraints />
     </rowConstraints>
 </GridPane>

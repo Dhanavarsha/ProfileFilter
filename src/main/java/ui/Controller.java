@@ -35,6 +35,9 @@ public class Controller implements SkillSet {
     @FXML
     Button execute;
 
+    @FXML
+    Label executionMsg;
+
     public void initialize() {
         addSkillSet();
     }
@@ -55,6 +58,7 @@ public class Controller implements SkillSet {
         } else {
             if (skillSetViews.get(0).areSkillsPresent()) {
                 new Application().parseProfiles(file.get(), getSelectionRule());
+                executionMsg.setText("      Execution Completed.");
             } else {
                 selectUserInputAlertLabel.setText("Please add skill details and then click on Execute");
             }
