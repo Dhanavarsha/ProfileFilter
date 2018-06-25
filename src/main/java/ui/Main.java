@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
-        primaryStage.setTitle("Profile Filter");
+        primaryStage.setTitle("Resume Classifier");
         Scene scene = new Scene(root, 1200, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
