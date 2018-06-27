@@ -33,4 +33,4 @@ Contact the shortlisted candidates! ;-)
 
 SelecedProfiles folder will have a text file  to contain all profile details about the selected candidates.
 
-![resumeclassifier](https://user-images.githubusercontent.com/20370531/41839755-ab81ed24-7881-11e8-85c7-c66e7c983970.gif)
+![resumeclassifier](https://user-images.githubusercontent.com/20370531/41963260-b1a2cd6a-7a14-11e8-90d4-3d8706ef798b.gif)
