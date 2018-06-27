@@ -5,7 +5,7 @@ A JAVA GUI based application for classifying Resumes based on the input skills b
 ### What is Resume Classifier?
 Recruiters have to go through numerous profiles on a daily basis looking for the desired skills in candidates. This is a very time taking and manual process. 
 
-Resume Classifier is a very handy java based application to filter candidate profiles based on the entered skills. It retrieves details like experience/contact/email for the shortlisted candidates.
+Resume Classifier is a very handy application to filter candidate profiles based on the entered skills. It retrieves details like experience/contact/email for the shortlisted candidates.
 
 
 ### Pre-requisites :
