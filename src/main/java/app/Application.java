@@ -42,11 +42,11 @@ public class Application {
             }
         }
         writeToFile(fileToBeWritten, allProfilesInfo.toString());
-        fileToBeWritten.renameTo(new File(folderLocation + "/selectedProfiles/" + fileToBeWritten.getName()));
+        fileToBeWritten.renameTo(new File(folderLocation + File.separator + "selectedProfiles" + File.separator + fileToBeWritten.getName()));
     }
 
     private String getTimeStamp() {
-        return new SimpleDateFormat("yyyy_MM_dd_HH:mm:ss").format(new Date());
+        return new SimpleDateFormat("yyyy_MM_dd_HH-mm-ss").format(new Date());
     }
 
     private void writeToFile(File file, String data) {
@@ -61,11 +61,11 @@ public class Application {
     }
 
     private File getDestinationForRejectedProfile(File file, String folderLocation) {
-        return new File(folderLocation + "/rejectedProfiles/" + file.getName());
+        return new File(folderLocation + File.separator + "rejectedProfiles" + File.separator + file.getName());
     }
 
     private File getDestinationForSelectedProfile(File file, String folderLocation) {
-        return new File(folderLocation + "/selectedProfiles/" + file.getName());
+        return new File(folderLocation + File.separator + "selectedProfiles" + File.separator + file.getName());
     }
 
     private ArrayList<DataExtractor> getDataExtractors() {
